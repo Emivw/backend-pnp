@@ -3,10 +3,11 @@ const router = express.Router();
 const db = require('../lib/dbconn.js')
 const auth = require('./authentication')
 const bcrypt = require('bcrypt');
+const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken')
 
 //register routes
-router.post('/api/register', (req, res) => {
+router.post('/api/register', express.json(), (req, res) => {
 
   let { email, password, password_repeat, username } = req.body
   //creating user object
@@ -23,18 +24,18 @@ router.post('/api/register', (req, res) => {
   }
 
   //validate user and the information provided by them
-  if (!email || !validator.validate(email)) {
-    return res.status(400).send({
-      msg: 'Please enter valid email id'
-    });
-  }
+  // if (!email || !validator.validate(email)) {
+  //   return res.status(400).send({
+  //     msg: 'Please enter valid email id'
+  //   });
+  // }
 
-  // password min 6 chars
-  if (!password || password.length < 6) {
-    return res.status(400).send({
-      msg: 'Please enter a password with min. 6 chars'
-    });
-  }
+  // // password min 6 chars
+  // if (!password || password.length < 6) {
+  //   return res.status(400).send({
+  //     msg: 'Please enter a password with min. 6 chars'
+  //   });
+  // }
 
   // password (repeat) does not match
   if (
