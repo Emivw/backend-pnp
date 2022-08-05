@@ -8,8 +8,8 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken')
 
 //register routes
-router.get('/', (req, res) => { 
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+router.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views', 'index.html'));
 })
 router.post('/api/register', express.json(), (req, res) => {
 
