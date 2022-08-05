@@ -3,10 +3,14 @@ const router = express.Router();
 const db = require('../lib/dbconn.js')
 const auth = require('./authentication')
 const bcrypt = require('bcrypt');
+const path = require('path');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken')
 
 //register routes
+router.get('/', (req, res) => { 
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+})
 router.post('/api/register', express.json(), (req, res) => {
 
   let { email, password, password_repeat, username } = req.body
