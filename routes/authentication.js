@@ -7,7 +7,7 @@ const auth=async(req,res,next)=>{
         const idToken=req.header('Authorization').replace('Bearer ','')
         const decoded=jwt.verify(idToken,process.env.SECRET_KEY)
         req.id=decoded.id
-        sql="SELECT * from users where user_id= ?"
+        const sql= "SELECT * from users where user_id= ?"
         db.query(sql,decoded.id,(err,result)=>{
             if(err){
               return res.status(400).send({

@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./lib/dbconn')
+const db = require('./lib/dbconn.js')
 const app = express();
 const cors = require('cors');
 // set up port
